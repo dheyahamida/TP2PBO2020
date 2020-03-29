@@ -18,14 +18,10 @@ import java.awt.Image;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-//Challenge clue:
-// import javax.swing.JComboBox;
-// import javax.swing.DefaultComboBoxModel;
-
 public class MainUI extends JFrame{
 	
-	ArrayList<Rider> riderList;
-	String header[] = new String[] {"No", "Name", "Nationality", "Number", "Bike"};
+	ArrayList<Buku> bukuList;
+	String header[] = new String[] {"Kode", "Nama", "Peminjam", "Tanggal Pinjam", "Tanggal Pengembalian"};
 	DefaultTableModel dtm;
 	int row, col;
 
@@ -35,7 +31,7 @@ public class MainUI extends JFrame{
 	*/
 	public MainUI() {
 		Initialize();
-		riderList = new ArrayList<>();
+		bukuList = new ArrayList<>();
 		dtm = new DefaultTableModel(header, 0);
 		jTable.setModel(dtm);
 		this.setLocationRelativeTo(null);
@@ -65,11 +61,6 @@ public class MainUI extends JFrame{
 		setTitle("Rider List & Table");
 		setResizable(false);
 
-		/**
-		*
-		* Component Lay here
-		* Challenge clue: it could be written here
-		*/
 		jTable.setModel(new DefaultTableModel(
 			new Object [][] {
 				{null, null, null, null},
@@ -182,12 +173,12 @@ public class MainUI extends JFrame{
 		String name = jTFName.getText();
 		String nationality = jTFNationality.getText();
 		int number = Integer.parseInt(jTFNumber.getText());
-		riderList.add(new Rider(name, nationality, number));
+		bukuList.add(new Rider(name, nationality, number));
 		dtm.setRowCount(0); //reset data model
-		for (int i = 0; i < riderList.size(); i++) {
-			Object[] objs = {i+1, riderList.get(i).name, 
-							riderList.get(i).nationality,
-							riderList.get(i).number};
+		for (int i = 0; i < bukuList.size(); i++) {
+			Object[] objs = {i+1, bukuList.get(i).name, 
+							bukuList.get(i).nationality,
+							bukuList.get(i).number};
 			dtm.addRow(objs);
 		}
 		//reset

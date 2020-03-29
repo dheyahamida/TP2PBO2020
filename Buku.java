@@ -1,14 +1,11 @@
-/*Rider Class
- *Challenge clue : missing property?
- */
-
-public class Rider {
+public class Buku {
 	
-	String name, nationality;
-	int number;
-	public Rider(String nm, String nt, int nb){
-		this.name = nm;
-		this.nationality = nt;
-		this.number = nb;
+	String kode, nama, peminjam, tanggal_pinjam, tanggal_pengembalian;
+	public Buku(String pk, String nm, String np, String tpin, String tpem){
+		this.kode = pk;
+		this.nama = nm;
+		this.peminjam = np;
+		this.tanggal_pinjam = tpin;
+		this.tanggal_pengembalian = tpem;
 	}
 }
