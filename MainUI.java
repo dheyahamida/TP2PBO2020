@@ -48,17 +48,17 @@ public class MainUI extends JFrame{
 		jTable = new JTable();
 		jBtnAdd = new JButton();
 		jIcon = new ImageIcon("assets/add.png"); //for sublime user, delete the "src/"
-		jLblName = new JLabel();
-		jLblNationality = new JLabel();
-		jLblNumber = new JLabel();
-		jTFName = new JTextField();
-		jTFNationality = new JTextField();
-		jTFNumber = new JTextField();
+		jLblKode = new JLabel();
+		jLblNama = new JLabel();
+		jLblPeminjam = new JLabel();
+		jTFKode = new JTextField();
+		jTFNama = new JTextField();
+		jTFPeminjam = new JTextField();
 		jPanel = new JPanel();
 		jScrollPane = new JScrollPane();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Rider List & Table");
+		setTitle("Peminjaman Buku List & Table");
 		setResizable(false);
 
 		jTable.setModel(new DefaultTableModel(
@@ -74,9 +74,9 @@ public class MainUI extends JFrame{
 		));
 
 		jScrollPane.setViewportView(jTable);
-		jLblName.setText("Name");
-		jLblNationality.setText("Nationality");
-		jLblNumber.setText("Number");
+		jLblKode.setText("Kode");
+		jLblNama.setText("Nama");
+		jLblPeminjam.setText("Peminjam");
 		jBtnAdd.setText("Add");
 		jBtnAdd.setIcon(resizeIcon(jIcon, 20, 20));
 		jBtnAdd.addActionListener(new ActionListener(){
@@ -97,16 +97,16 @@ public class MainUI extends JFrame{
 				.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
 					.addGroup(jPanelLayout.createSequentialGroup()
 						.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-							.addComponent(jLblName)
-							.addComponent(jLblNationality)
-							.addComponent(jLblNumber))
+							.addComponent(jLblKode)
+							.addComponent(jLblNama)
+							.addComponent(jLblPeminjam))
 			
 						.addGap(18, 18, 18)
 			
 						.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-							.addComponent(jTFName)
-							.addComponent(jTFNationality)
-							.addComponent(jTFNumber, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+							.addComponent(jTFKode)
+							.addComponent(jTFNama)
+							.addComponent(jTFPeminjam, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
 			
 						.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
 							.addComponent(jBtnAdd, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
@@ -121,20 +121,20 @@ public class MainUI extends JFrame{
 				.addContainerGap()
 			
 				.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-					.addComponent(jLblName)
-					.addComponent(jTFName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(jLblKode)
+					.addComponent(jTFKode, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 			
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 			
 				.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-					.addComponent(jLblNationality)
-					.addComponent(jTFNationality, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(jLblNama)
+					.addComponent(jTFNama, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 			
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 			
 				.addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-					.addComponent(jLblNumber)
-					.addComponent(jTFNumber, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(jLblPeminjam)
+					.addComponent(jTFPeminjam, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addComponent(jBtnAdd))
 
 				.addContainerGap()
@@ -170,15 +170,15 @@ public class MainUI extends JFrame{
 
 	private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jBtnAddActionPerformed
 		// TODO add your handling code here:
-		String name = jTFName.getText();
-		String nationality = jTFNationality.getText();
-		int number = Integer.parseInt(jTFNumber.getText());
-		bukuList.add(new Rider(name, nationality, number));
+		String Kode = jTFKode.getText();
+		String Nama = jTFNama.getText();
+		int Peminjam = Integer.parseInt(jTFPeminjam.getText());
+		bukuList.add(new Rider(Kode, Nama, Peminjam));
 		dtm.setRowCount(0); //reset data model
 		for (int i = 0; i < bukuList.size(); i++) {
-			Object[] objs = {i+1, bukuList.get(i).name, 
-							bukuList.get(i).nationality,
-							bukuList.get(i).number};
+			Object[] objs = {i+1, bukuList.get(i).Kode, 
+							bukuList.get(i).Nama,
+							bukuList.get(i).Peminjam};
 			dtm.addRow(objs);
 		}
 		//reset
@@ -187,10 +187,10 @@ public class MainUI extends JFrame{
 	}//GEN-LAST:event_jBtnAddActionPerformed
 
 	private void clearField(){
-		jTFName.requestFocus();
-		jTFName.setText("");
-		jTFNationality.setText("");
-		jTFNumber.setText("");
+		jTFKode.requestFocus();
+		jTFKode.setText("");
+		jTFNama.setText("");
+		jTFPeminjam.setText("");
 	}
 
 	private static Icon resizeIcon(ImageIcon icon, int resizedWidth, int resizedHeight) {
@@ -210,19 +210,19 @@ public class MainUI extends JFrame{
 		*/
 		try{
 			for (javax.swing.UIManager.LookandFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+				if ("Nimbus".equals(info.getKode())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassKode());
 					break;
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainUI.class.getKode()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainUI.class.getKode()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainUI.class.getKode()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainUI.class.getKode()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		//</your-fold>
 
@@ -237,15 +237,18 @@ public class MainUI extends JFrame{
 	//Object declaration//GEN-BEGIN:variables
 	private JTable jTable;
 	private JButton jBtnAdd;
-	private JLabel jLblName;
-	private JLabel jLblNationality;
-	private JLabel jLblNumber;
-	private JTextField jTFName;
-	private JTextField jTFNationality;
-	private JTextField jTFNumber;
+	private JLabel jLblKode;
+	private JLabel jLblNama;
+	private JLabel jLblPeminjam;
+	private JTextField jTFKode;
+	private JTextField jTFNama;
+	private JTextField jTFPeminjam;
 	private JPanel jPanel;
 	private JScrollPane jScrollPane;
 	private ImageIcon jIcon;
 	// End of variables declaration//GEN-END:variables
+
+
+	/*Kode praktikum yang kemarin masih gabisa jalan juga di pc ini, jujur jadi bingung*/
 }
 
